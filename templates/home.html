@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" type="text/css" href="./styles2.css">
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"> -->
+    <title>Home : Pneumonia Identificaion with X-Ray</title>
+    <style>
+    body {
+        /* background-color: #b85757; */
+        background-image: url("background-1.png");
+        font-family: 'Outfit', sans-serif;
+    }
+    .isi-container,
+    .container,
+    .card-container {
+        /* background-image: url("./images/background-1.png"); */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .card-container {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+    }
+    .card {
+        margin-top: 20px;
+        background-color: white;
+        /* flex: 1; */
+        width: 1000px;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    }
+    .form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn {
+        margin: 8px;
+    }
+    #frame {
+        max-width: 24rem;
+    }
+    .cr {
+        color: #5076db;
+        /* margin-bottom: 0; */
+    }
+    .alert{
+        text-align: left;
+        width: 100%;
+    }
+    a.login-btns1:disabled {
+        background-color: #9cb6ff;
+        color: white;
+        padding: 8px 15px;
+        margin: 8px 0;
+        /* cursor: pointer; */
+        width: 105px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 5px;
+        border: 2px solid transparent;
+        /* -webkit-transition: all 0.3s ease-in-out; */
+        /* transition: all 0.3s ease-in-out; */
+    }
+    a.login-btns2:disabled {
+        background-color: #ea8a79;
+        color: white;
+        padding: 8px 15px;
+        margin: 8px 0;
+        /* cursor: pointer; */
+        width: 105px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 5px;
+        border: 2px solid transparent;
+        /* -webkit-transition: all 0.3s ease-in-out; */
+        /* transition: all 0.3s ease-in-out; */
+    }
+    .login-btns1 {
+        background-color: #5076db;
+        color: white;
+        padding: 8px 15px;
+        margin: 8px 0;
+        /* cursor: pointer; */
+        width: 180px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 5px;
+        border: 2px solid transparent;
+        margin-bottom: 20px;
+        /* -webkit-transition: all 0.3s ease-in-out; */
+        /* transition: all 0.3s ease-in-out; */
+    }
+    .login-btns2 {
+        background-color: #da3e22;
+        color: white;
+        padding: 8px 15px;
+        margin: 8px 0;
+        /* cursor: pointer; */
+        width: 105px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 5px;
+        border: 2px solid transparent;
+        /* -webkit-transition: all 0.3s ease-in-out; */
+        /* transition: all 0.3s ease-in-out; */
+    }
+    .login-btns1:hover{
+        background-color: transparent;
+        color: #5076db;
+        border: 2px solid #5076db;
+    }
+    .login-btns2:hover {
+        background-color: transparent;
+        color: #da3e22;
+        border: 2px solid #da3e22;   
+    } 
+    /* .class-btns1:hover{
+        background-color: transparent;
+        color: #5076db;
+        border: 2px solid #5076db;
+    }
+    .class-btns1 {
+        background-color: #5076db;
+        color: white;
+        padding: 8px 15px;
+        margin: 8px 0;
+        cursor: pointer;
+        width: 105px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 5px; 
+        border: 2px solid transparent;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    } */
+    ul {
+        margin-bottom: 0;
+    }
+    .drop-container {
+        position: relative;
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        padding: 20px;
+        border-radius: 10px;
+        border: 2px dashed #555;
+        color: #444;
+        cursor: pointer;
+        transition: background .2s ease-in-out, border .2s ease-in-out;
+    }
+
+    .drop-container:hover {
+        background: #eee;
+        border-color: #111;
+    }
+    
+    .drop-container:hover .drop-title {
+        color: #222;
+    }
+    
+    .drop-title {
+        color: #444;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        transition: color .2s ease-in-out;
+    }
+
+    input[type=file]::file-selector-a {
+        margin-right: 20px;
+        border: none;
+        background: #5076db;
+        padding: 10px 20px;
+        border-radius: 10px;
+        color: #fff;
+        cursor: pointer;
+        transition: background .2s ease-in-out;
+    }
+    
+    input[type=file]::file-selector-a:hover {
+        background: #0d45a5;
+    }
+    .mb-5 {
+        margin-bottom :0 px
+    }
+    .alert-info {
+        --bs-alert-color: #ffffff;
+        --bs-alert-bg: #5076db;
+        --bs-alert-border-color: #5076db;
+    }
+    h4 {
+        text-shadow: 0 5px 10px rgb(0 0 0 / 0.2);;
+    }
+    /* ----------------------------------------- */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color: #ffffff;
+        padding: 20px;
+        text-align: center;
+    }
+    header h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+        padding: 0;
+
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+    .left-section {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+    .left-section img {
+        max-width: 50%;
+        max-height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .left-section section {
+        margin-bottom: 10px;
+    }
+    .right-section section {
+        margin-bottom: 30px;
+    }
+    .right-section h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+    }
+    footer p {
+        margin: 0;
+    }
+    .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px; /* Ukuran kontainer gambar */
+        height: 100px; /* Ukuran kontainer gambar */
+        border: 1px solid #ccc; /* Hanya untuk contoh, bisa dihilangkan */
+    }
+
+    .logo {
+        max-width: 100%; /* Gambar akan menyesuaikan lebar kontainer */
+        max-height: 100%; /* Gambar akan menyesuaikan tinggi kontainer */
+        margin-bottom: 25px;
+    }
+    .left-align {
+        text-align: justify;
+    }
+    /* img{
+        transition-delay: 100ms;
+    } */
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q3NQ2ZZ273"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-Q3NQ2ZZ273');
+    </script> -->
+
+    <!-- Google Tag Manager -->
+    <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-5DQGP22');
+    </script> -->
+    <!-- End Google Tag Manager -->
+
+    
+<!-- Google tag (gtag.js) -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-W7J0KLYVB4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W7J0KLYVB4');
+</script> -->
+<!-- Google Tag Manager -->
+<!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCXXPXLR');</script> -->
+<!-- End Google Tag Manager -->
+<!-- <script src="https://cdn.pagesense.io/js/829011130/6f79c83305a14ed18fc2c1b57fd6c0b3.js"></script> -->
+
+</head>
+<body>
+    <div class="isi-container" onshow="clearImage()">
+        <div class="container card-container text-center">
+            <div class="card">
+                <div class="card-header mb-3 pt-3 pb-3">
+                    <h4>IDENTIFIKASI PENYAKIT PNEUMONIA BERDASARKAN CITRA SINAR-X MENGGUNAKAN CONVOLUTIONAL NEURAL NETWORK  DENGAN ARSITEKTUR VGG19</h4>
+                </div>
+            <div class="card-body">
+                <header>
+                    <h4>Universitas Negeri Malang</h4>
+                    <h4>Fakultas Matematika dan Ilmu Pengetahuan Alam</h4>
+                    <h4>Departemen Matematika</h4>
+                </header>
+            
+                <div class="grid-container">
+                    <div class="left-section">
+                        <img src="/static/logo_um.png" alt="Logo Universitas" class="logo">
+                        <section>
+                            <h5><strong>Dosen Pembimbing</strong></h5>
+                            <p>Susy Kuspambudi Andaini, Dra, M.Kom</p>
+                        </section>
+                        <section>
+                            <h5><strong>Nama Mahasiswa</strong></h5>
+                            <p>Hanif Muhammad Mufid</p>
+                        </section>
+                    </div>
+                    <div class="right-section">
+                        <section>
+                            <h5><strong>Penjelasan Website</strong></h5>
+                            <p class ="left-align">
+                                Website ini merupakan hasil dari skripsi yang berfokus pada identifikasi pneumonia menggunakan model Convolutional Neural Network (CNN) dengan arsitektur VGG19. Pada website ini, user (pengguna) dapat mengunggah gambar hasil pemeriksaan rontgen paru-paru untuk mengidentifikasi kemungkinan adanya pneumonia. Model CNN VGG19 telah dilatih sebelumnya menggunakan dataset yang mencakup gambar normal dan gambar dengan pneumonia. Hasil prediksi dari model ini akan ditampilkan kepada user dengan keterangan apakah gambar tersebut menunjukkan adanya pneumonia atau tidak, memberikan dukungan penting bagi diagnosis medis secara cepat dan akurat.
+                            </p>
+                        </section>
+                        <section>
+                            <h5><strong>Kontak Mahasiswa</strong></h5>
+                            <p>Email: hanif.m.mufid@gmail.com</p>
+                        </section>
+                    </div>
+                </div>
+                <div>
+                    <a class="login-btns1" style="text-decoration: none" href ="/classification">Halaman Identifikasi</a>
+                </div> 
+                <br>
+                <footer>
+                    <p>&copy; 2023 Universitas Negeri Malang. All rights reserved.</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <div class="copyright text-center">
+        <!-- <p class="cr">Oleh: Hanif Muhammad Mufid</p> -->
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        function preview() {
+            frame.src = URL.createObjectURL(event.target.files[0]);
+            clearbtn.disabled = false;
+            submitbtn.disabled = false;
+            document.getElementById('result').innerHTML= '';
+            }
+        function clearImage() {
+            document.getElementById('imagefile').value = null;
+            frame.src = "";
+            clearbtn.disabled = true;
+            submitbtn.disabled = true;
+            document.getElementById('result').innerHTML= '';                }
+    </script>
+    
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DQGP22"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+</body>
+</html>
